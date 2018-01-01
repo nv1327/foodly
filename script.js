@@ -1,20 +1,20 @@
+
 //Needs:
 //The input if loop should be able to take more than just "Yes"
 //A way to buy multiple quantities of the same item like 2 x Apples (then return total price of cart)
 
-//Finished issues/needs:
-//A way to place infinite orders *finished!*
-//implement a dictionary to keep records of food bought *finished - array that stores terms as mini dictionaries*
 
-//To make this a Node.js sketch: https://docs.nodejitsu.com/articles/command-line/how-to-prompt-for-command-line-input/
+//Current problem: price of item gets parsed from string to int and then added to global var totalCost
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
 
 var secondOrder;
 foodCart = [];
+//var totalCost;
 
-function foodOrder(item, price) {
-	//secondOrder = "Yes";
+function foodOrder(item, price, quantity) {
 	this.item = item;
 	this.price = price;
+	//this.quantity = quantity;
 	this.print = function() {
 		console.log(this.item + ' : ' + this.price);
 	};
@@ -23,7 +23,9 @@ function foodOrder(item, price) {
 	if (question === 'Yes') {
 		console.log('Order approved!');
 		console.log(this.item + ' was ordered for $' + this.price + '!');
-		foodCart.push({ name: item, cost: price });
+			foodCart.push({ name: item, cost: price });
+			//parseInt(price);
+			//totalCost = totalCost + price;
 	} else {
 		console.log('Order canceled!');
 		console.log(this.item + ' was not ordered!');
@@ -89,8 +91,6 @@ function resetSecondOrder() {
  }
 }
 
-console.log(" ");
-console.log(" ");
-console.log("Your cart looks like...");
+
 console.log(foodCart);
-//console.log(foodCart[0]); --> having an array makes it really easy to call individual elements in the cart
+//console.log(totalCost);
